@@ -34,9 +34,9 @@ npm install
 npm run dev
 ```
 
-### Edit the Release file
+### Edit the repository metadata
 
-Edit the `Release` file located in the `public` folder.
+Edit the `exports.name` and `exports.description` strings in the `repo.js` file.
 
 ### Add your packages
 
@@ -48,7 +48,7 @@ Depictions live in the `pages` folder. The format for the file name is `name.js`
 
 ### Add your package icons
 
-Put your icons in the public folder and then edit the `repo.js` file. The key is the name of your package, the value is the path of the icon without `public`.
+Put your icons in the public folder and then edit the `exports.icons` object in the `repo.js` file. The key is the name of your package, the value is the path of the icon without `public`.
 
 ### Modify home page
 

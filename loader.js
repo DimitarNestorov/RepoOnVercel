@@ -166,6 +166,7 @@ module.exports = async function () {
 	}
 
 	return `export const packages = ${JSON.stringify(restructuredPackages)};
-export const title = ${JSON.stringify(repo.title)};
+export const name = ${JSON.stringify(repo.name)};
+export const description = ${JSON.stringify(repo.description)};
 export const icons = ${JSON.stringify(repo.icons)};`
 }

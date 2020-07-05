@@ -31,7 +31,7 @@ npm install
 #### Run the server
 
 ```bash
-npm run local
+npm run dev
 ```
 
 ### Edit the Release file
@@ -63,7 +63,7 @@ After you've created your repo click [here to import](https://vercel.com/import)
 This template uses the GitHub API to cache requests. The GitHub API is limited to 60 unauthenticated requests per IP address per hour. To increase this limit you need to specify a GitHub token as an environment variable (`GITHUB_TOKEN`) when running `npm run local`. To get a token go to [Settings -> Developer settings -> Personal access tokens](https://github.com/settings/tokens) and click "Generate new token". If you experience `rate limit exceeded` when deploying to Vercel you need to specify a GitHub token as an environment variable in your project settings.
 
 ```sh
-GITHUB_TOKEN=d107d6aaf3a6b550ebeead351a3974cb8b262b74 npm run local
+GITHUB_TOKEN=d107d6aaf3a6b550ebeead351a3974cb8b262b74 npm run dev
 ```
 
 ## Notes

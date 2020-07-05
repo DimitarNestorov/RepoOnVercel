@@ -1,0 +1,13 @@
+module.exports = {
+	experimental: {
+		async rewrites() {
+			return [
+				{ source: '/./Packages', destination: '/api/Packages' },
+				{ source: '/./Packages.gz', destination: '/api/Packages.gz' },
+				{ source: '/Packages', destination: '/api/Packages' },
+				{ source: '/Packages.gz', destination: '/api/Packages.gz' },
+				{ source: '/./api/(.*)', destination: '/api/$1' },
+			]
+		},
+	},
+}

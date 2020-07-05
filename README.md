@@ -8,6 +8,8 @@ Repo on Vercel is aimed to make possible downloading packages directly from GitH
 
 ## Getting Started
 
+<p align="center"><a href="https://github.com/RepoOnVercel/repo/generate"><img width="200" src="https://raw.githubusercontent.com/RepoOnVercel/repo/master/.vscode/Button.png" alt="Use this template"></a></p>
+
 ### Run the development server
 
 #### Install Node.js

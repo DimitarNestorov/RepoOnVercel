@@ -38,6 +38,10 @@ npm run dev
 
 Edit the `exports.name` and `exports.description` strings in the `repo.js` file.
 
+### Replace `CydiaIcon.png` and `favicon.ico` with your own
+
+Icons are located in the `public` folder. They are visible in package managers and on the web.
+
 ### Add your packages
 
 Insert your GitHub Releases package URLs in the `exports.packages` array in the `repo.js` file.

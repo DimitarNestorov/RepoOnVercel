@@ -15,7 +15,7 @@ if (!fs.existsSync(cacheFolder)) {
 }
 
 // Load node_modules/.cache/urlsLoader.json
-const cacheVersion = 1
+const cacheVersion = 2
 const cacheFile = path.join(__dirname, 'node_modules', '.cache', 'urlsLoader.json')
 function getCacheFileContents() {
 	const emptyCache = {
@@ -120,15 +120,13 @@ async function getMetaForURL(url) {
 		}
 	}
 
-	// Generate Filename (api/deb/*Name*/*Version*)
-	if (!meta.Name || !meta.Version) throw new Error('Package does not specify Name or Version in control file')
-	meta.Filename = `api/deb/${meta.Name}/${meta.Version}`
-
 	// Calculate Size [size of package]
 	meta.Size = data.length
 
 	// Calculate MD5sum of package
 	meta.MD5sum = crypto.createHash('md5').update(data).digest('hex')
+
+	meta.Filename = `api/deb/${meta.MD5sum}.deb`
 
 	// Calculate SHA1 of package
 	meta.SHA1 = crypto.createHash('sha1').update(data).digest('hex')
@@ -158,14 +156,17 @@ module.exports = async function () {
 	}
 
 	const restructuredPackages = {}
+	const md5Table = {}
 
 	for (const p of packages) {
 		// package is a reserved variable name
 		if (!restructuredPackages[p.meta.Name]) restructuredPackages[p.meta.Name] = {}
 		restructuredPackages[p.meta.Name][p.meta.Version] = p
+		md5Table[p.meta.MD5sum] = p.url
 	}
 
 	return `export const packages = ${JSON.stringify(restructuredPackages)};
+export const md5Table = ${JSON.stringify(md5Table)};
 export const name = ${JSON.stringify(repo.name)};
 export const description = ${JSON.stringify(repo.description)};
 export const icons = ${JSON.stringify(repo.icons)};`

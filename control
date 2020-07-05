@@ -1,7 +1,7 @@
 Package: example.red
 Name: Red
 Depends: mobilesubstrate
-Version: 1.0.0
+Version: 1.0.1
 Architecture: iphoneos-arm
 Description: An awesome MobileSubstrate tweak!
 Maintainer: Repo on Vercel

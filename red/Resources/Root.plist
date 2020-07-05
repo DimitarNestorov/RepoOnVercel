@@ -22,6 +22,18 @@
 			<key>label</key>
 			<string>Awesome Switch 1</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>example.red.preferences</string>
+			<key>key</key>
+			<string>AwesomeSwitch2</string>
+			<key>label</key>
+			<string>Awesome Switch 2</string>
+		</dict>
 	</array>
 	<key>title</key>
 	<string>Red</string>

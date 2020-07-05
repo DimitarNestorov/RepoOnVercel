@@ -8,7 +8,7 @@ Repo on Vercel is aimed to make possible downloading packages directly from GitH
 
 ## Getting Started
 
-<p align="center"><a href="https://github.com/dimitarnestorov/RepoOnVercel/generate"><img width="200" src="https://raw.githubusercontent.com/dimitarnestorov/RepoOnVercel/master/.vscode/Button.png" alt="Use this template"></a></p>
+<p align="center"><a href="https://github.com/dimitarnestorov/RepoOnVercel/generate"><img width="200" src=".vscode/Button.png" alt="Use this template"></a></p>
 
 ### Run the development server
 
@@ -69,6 +69,12 @@ This template uses the GitHub API to cache requests. The GitHub API is limited t
 ```sh
 GITHUB_TOKEN=d107d6aaf3a6b550ebeead351a3974cb8b262b74 npm run dev
 ```
+
+## Disable Vercel comments
+
+<p align="center"><img src=".vscode/VercelComment.png" alt="Vercel comment example"></p>
+
+By default Vercel for GitHub will comment on commits and pull requests when it successfully deploys your repo. This can be disabled by setting `github.silent` to `true` in your Vercel configuration (add `vercel.json` in the root of your repository). [Reference](https://vercel.com/docs/configuration#git-integrations/github-silent).
 
 ## Notes
 

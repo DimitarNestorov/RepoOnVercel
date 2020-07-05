@@ -56,7 +56,7 @@ Put your icons in the public folder and then edit the `exports.icons` object in 
 
 ### Modify the home page
 
-Modify `index.js` in the `pages` folder and open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+Modify `index.js` in the `pages` folder, [run the development server](#run-the-development-server), and open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
 ### Deploy on Vercel
 

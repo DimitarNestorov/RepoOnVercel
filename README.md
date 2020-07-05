@@ -22,7 +22,7 @@ You can install it using [Chocolatey](https://chocolatey.org/) on Windows: `choc
 
 #### Install the dependencies
 
-Run the following in the root folder of your fork:
+Run the following in the root folder of your repo:
 
 ```sh
 npm install
@@ -84,4 +84,4 @@ community.repo.access: allow_forwarding_all
 
 Visit the [Add Your Repo](https://repo.community/add) page, fill out the form at the bottom of the page, and click Submit.
 
-## Repositories using Repo on Vercel
+## Repositories using this template

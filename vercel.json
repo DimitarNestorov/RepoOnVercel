@@ -1,0 +1,20 @@
+{
+	"redirects": [
+		{
+			"source": "/Packages",
+			"destination": "/api/Packages",
+			"statusCode": 301
+		},
+		{
+			"source": "/./api/(.*)",
+			"destination": "/api/$1",
+			"statusCode": 301
+		}
+	],
+	"rewrites": [
+		{
+			"source": "/./(.*)",
+			"destination": "/$1"
+		}
+	]
+}

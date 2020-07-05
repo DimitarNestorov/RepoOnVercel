@@ -1,0 +1,10 @@
+Package: example.red
+Name: Red
+Depends: mobilesubstrate
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Repo on Vercel
+Author: Repo on Vercel
+Section: Tweaks
+Icon: file:///Library/PreferenceBundles/RedPreferences.bundle/icon@3x.png

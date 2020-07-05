@@ -52,7 +52,7 @@ Put your icons in the public folder and then edit the `repo.js` file. The key is
 
 ### Modify home page
 
-Modify `index.js` in the `pages` folder and open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Modify `index.js` in the `pages` folder and open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
 ### Deploy on Vercel
 

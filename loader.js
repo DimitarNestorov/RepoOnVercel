@@ -15,17 +15,18 @@ if (!fs.existsSync(cacheFolder)) {
 }
 
 // Load node_modules/.cache/urlsLoader.json
+const cacheVersion = 1
 const cacheFile = path.join(__dirname, 'node_modules', '.cache', 'urlsLoader.json')
 function getCacheFileContents() {
 	const emptyCache = {
-		version: 1,
+		version: cacheVersion,
 		cache: {},
 	}
 
 	if (fs.existsSync(cacheFile)) {
 		try {
 			const cacheFileContents = require(cacheFile)
-			if (cacheFileContents.version !== emptyCache.version) return emptyCache
+			if (cacheFileContents.version !== cacheVersion) return emptyCache
 			if (typeof cacheFileContents.cache !== 'object') return emptyCache
 
 			return cacheFileContents
@@ -138,12 +139,10 @@ async function getMetaForURL(url) {
 	return meta
 }
 
-module.exports = function (source, map, meta) {
-	const callback = this.async()
+module.exports = async function () {
+	const repo = require(this.resourcePath)
 
-	const repo = require(map.sources[0])
-
-	Promise.all(
+	const packages = await Promise.all(
 		repo.packages.map(async (url) => {
 			const assetId = urlsToAssetId[url] || (urlsToAssetId[url] = await getAssetIdForURL(url))
 			if (!assetId) throw new Error(`Asset with URL ${url} not found`)
@@ -151,27 +150,22 @@ module.exports = function (source, map, meta) {
 			return { meta, url }
 		}),
 	)
-		.then((packages) => {
-			const currentCacheSerialized = JSON.stringify(cache)
-			if (lastWrittenCache !== currentCacheSerialized) {
-				fs.writeFileSync(cacheFile, currentCacheSerialized)
-				lastWrittenCache = currentCacheSerialized
-			}
 
-			const restructuredPackages = {}
+	const currentCacheSerialized = JSON.stringify({ version: cacheVersion, cache })
+	if (lastWrittenCache !== currentCacheSerialized) {
+		fs.writeFileSync(cacheFile, currentCacheSerialized)
+		lastWrittenCache = currentCacheSerialized
+	}
 
-			for (const p of packages) {
-				// package is a reserved variable name
-				if (!restructuredPackages[p.meta.Name]) restructuredPackages[p.meta.Name] = {}
-				restructuredPackages[p.meta.Name][p.meta.Version] = p
-			}
+	const restructuredPackages = {}
 
-			const contents = `export const packages = ${JSON.stringify(restructuredPackages)};
+	for (const p of packages) {
+		// package is a reserved variable name
+		if (!restructuredPackages[p.meta.Name]) restructuredPackages[p.meta.Name] = {}
+		restructuredPackages[p.meta.Name][p.meta.Version] = p
+	}
+
+	return `export const packages = ${JSON.stringify(restructuredPackages)};
 export const title = ${JSON.stringify(repo.title)};
 export const icons = ${JSON.stringify(repo.icons)};`
-			callback(null, contents, map, meta)
-		})
-		.catch((error) => {
-			callback(error || new Error('An error occurred'))
-		})
 }

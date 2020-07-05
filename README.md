@@ -8,7 +8,7 @@ Repo on Vercel is aimed to make possible downloading packages directly from GitH
 
 ## Getting Started
 
-<p align="center"><a href="https://github.com/RepoOnVercel/repo/generate"><img width="200" src="https://raw.githubusercontent.com/RepoOnVercel/repo/master/.vscode/Button.png" alt="Use this template"></a></p>
+<p align="center"><a href="https://github.com/dimitarnestorov/RepoOnVercel/generate"><img width="200" src="https://raw.githubusercontent.com/dimitarnestorov/RepoOnVercel/master/.vscode/Button.png" alt="Use this template"></a></p>
 
 ### Run the development server
 
@@ -54,7 +54,7 @@ Depictions live in the `pages` folder. The format for the file name is `name.js`
 
 Put your icons in the public folder and then edit the `exports.icons` object in the `repo.js` file. The key is the name of your package, the value is the path of the icon without `public`.
 
-### Modify home page
+### Modify the home page
 
 Modify `index.js` in the `pages` folder and open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 

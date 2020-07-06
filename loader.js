@@ -120,6 +120,9 @@ async function getMetaForURL(url) {
 		}
 	}
 
+	delete meta.Depiction
+	delete meta.Icon
+
 	// Calculate Size [size of package]
 	meta.Size = data.length
 

@@ -1,6 +1,8 @@
 import { packages, icons } from '../../loader!../../repo'
 import { getRepoUrl } from '../../utils'
 
+const spaceRegExp = /\s/g
+
 export default (req, res) => {
 	const url = getRepoUrl(req)
 	const result = []
@@ -14,7 +16,7 @@ export default (req, res) => {
 			}
 
 			icons[name] && strings.push(`Icon: ${url}${icons[name]}`)
-			strings.push(`Depiction: ${url}${name}`)
+			strings.push(`Depiction: ${url}${name.replace(spaceRegExp, '-')}`)
 
 			result.push(strings.join('\n'))
 		}

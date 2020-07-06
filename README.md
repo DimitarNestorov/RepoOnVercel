@@ -50,6 +50,8 @@ Insert your GitHub Releases package URLs in the `exports.packages` array in the 
 
 Depictions live in the `pages` folder. The format for the file name is `name.js` where `name` is the name of your package. To view your depictions before deploying run the development server and visit `http://localhost:3000/name` where `name` is the name of your package.
 
+If your package name has spaces in it replace those with `-` for the depiction file.
+
 ### Add your package icons
 
 Put your icons in the public folder and then edit the `exports.icons` object in the `repo.js` file. The key is the name of your package, the value is the path of the icon without `public`.
@@ -72,7 +74,7 @@ GITHUB_TOKEN=d107d6aaf3a6b550ebeead351a3974cb8b262b74 npm run dev
 
 ## Disable Vercel comments
 
-<p align="center"><img src=".vscode/VercelComment.png" alt="Vercel comment example"></p>
+<p align="center"><img src=".vscode/VercelComment.png" width="836" alt="Vercel comment example"></p>
 
 By default Vercel for GitHub will comment on commits and pull requests when it successfully deploys your repo. This can be disabled by setting `github.silent` to `true` in your Vercel configuration (add `vercel.json` in the root of your repository). [Reference](https://vercel.com/docs/configuration#git-integrations/github-silent).
 

@@ -26,9 +26,9 @@ export default function Links({ children }) {
 					}
 				`}</style>
 				{children.map(
-					(link) =>
+					(link, i) =>
 						link.href && (
-							<a href={link.href} target="_blank">
+							<a href={link.href} key={i} target="_blank">
 								<img src={link.icon} alt={`${link.label} icon`} />
 								<span>{link.label}</span>
 							</a>

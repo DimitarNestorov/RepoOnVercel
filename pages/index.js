@@ -101,9 +101,24 @@ export default function Home({ repoURL }) {
 					value={repoURL}
 					readOnly
 					ref={inputRef}
-					onClick={() => inputRef.current.setSelectionRange(0, repoURL.length)}
+					onClick={() => {
+						inputRef.current.select()
+						inputRef.current.setSelectionRange(0, repoURL.length)
+					}}
 				/>
-				<button onClick={() => navigator.clipboard.writeText(repoURL)}>Copy</button>
+				<button
+					onClick={() => {
+						if (navigator.clipboard && navigator.clipboard.writeText) {
+							navigator.clipboard.writeText(repoURL)
+						} else {
+							inputRef.current.select()
+							inputRef.current.setSelectionRange(0, repoURL.length)
+							document.execCommand('copy')
+						}
+					}}
+				>
+					Copy
+				</button>
 			</div>
 		</Page>
 	)

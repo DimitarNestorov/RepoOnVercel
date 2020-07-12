@@ -11,7 +11,7 @@ export default function Home({ repoURL }) {
 			<style jsx>{`
 				h1 {
 					text-align: center;
-					margin-bottom: 40px;
+					margin-bottom: 100px;
 				}
 
 				.package-manager {
@@ -19,11 +19,12 @@ export default function Home({ repoURL }) {
 					align-items: center;
 					color: white;
 					text-align: center;
-					background-color: #1b5538;
-					margin: 16px auto;
-					width: 220px;
+					background-color: #000000;
+					border: 1px solid rgba(255, 255, 255, 0.5);
+					margin: 10px auto;
+					width: 200px;
 					border-radius: 14px;
-					font-size: 22px;
+					font-size: 20px;
 					text-decoration: none;
 				}
 
@@ -37,46 +38,51 @@ export default function Home({ repoURL }) {
 					background-repeat: no-repeat;
 					width: 36px;
 					height: 36px;
-					margin: 8px 0 8px 8px;
+					margin: 6px 0 6px 6px;
 					background-size: contain;
 				}
 
 				.package-manager.cydia::before {
-					background-image: url('/package-managers/Cydia.png');
+					background-image: url('/assets/package-managers/Cydia.png');
 				}
 				.package-manager.zebra::before {
-					background-image: url('/package-managers/Zebra.png');
+					background-image: url('/assets/package-managers/Zebra.png');
 				}
 				.package-manager.sileo::before {
-					background-image: url('/package-managers/Sileo.png');
+					background-image: url('/assets/package-managers/Sileo.png');
 				}
 
 				.input-container {
-					width: 300px;
+					width: 320px;
+					max-width: 90%;
 					position: relative;
 					margin: 32px auto;
 				}
 
 				.input-container > input {
 					border: 0 none;
-					padding: 0;
-					padding: 12px;
+					padding: 0 68px 0 12px;
 					font-size: 18px;
-					height: 54px;
+					height: 50px;
 					width: 100%;
 					border-radius: 12px;
 					flex-grow: 1;
+					background-color: #333333;
+					color: #ffffff;
 				}
 
 				.input-container > button {
 					font-size: 16px;
 					position: absolute;
 					height: 30px;
-					right: 12px;
-					top: 12px;
-					padding: 4px 6px;
+					right: 10px;
+					top: 10px;
+					padding: 6px 8px;
 					border-radius: 6px;
-					border: 1px solid black;
+					background-color: #1e90ff;
+					color: #ffffff;
+					border: 0 none;
+					line-height: 16px;
 				}
 			`}</style>
 

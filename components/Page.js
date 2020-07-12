@@ -24,8 +24,18 @@ export default function Page({ children, title }) {
 				body {
 					margin: 0;
 				}
+
+				a {
+					color: #1687e9;
+				}
+
+				.container {
+					max-width: 400px;
+					width: 90%;
+					margin: 0 auto;
+				}
 			`}</style>
-			{children}
+			<div className="container">{children}</div>
 		</>
 	)
 }

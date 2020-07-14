@@ -8,6 +8,8 @@ const axios = require('axios')
 const gunzipMaybe = require('gunzip-maybe')
 const tar = require('tar-stream')
 
+const { urlRegexp } = require('./utils')
+
 // Create node_modules/.cache folder
 const cacheFolder = path.join(__dirname, 'node_modules', '.cache')
 if (!fs.existsSync(cacheFolder)) {
@@ -42,9 +44,10 @@ let lastWrittenCache = JSON.stringify(cache)
 
 const urlsToAssetId = {}
 
-const urlRegExp = /^https:\/\/github.com\/([^\/]+)\/([^\/]+)\/releases\/download\/([^\/]+)\/[^\/]+$/
 function getAssetIdForURL(url) {
-	const [, owner, repo, tag] = url.match(urlRegExp)
+	const result = url.match(urlRegexp)
+	if (!result) throw new Error(`Bad URL: ${url}`)
+	const [, owner, repo, tag] = result
 	const options = {}
 	if (process.env.GITHUB_TOKEN) options.headers = { Authorization: `token ${process.env.GITHUB_TOKEN}` }
 	return axios

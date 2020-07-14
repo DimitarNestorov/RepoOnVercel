@@ -1,4 +1,6 @@
-export function getRepoUrl(req) {
+exports.urlRegexp = /^https:\/\/github.com\/([^\/]+)\/([^\/]+)\/releases\/download\/([^\/]+)\/([^\/]+)$/
+
+exports.getRepoUrl = function getRepoUrl(req) {
 	if (req) {
 		return `${
 			req.headers['x-forwarded-proto']

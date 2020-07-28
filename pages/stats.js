@@ -326,7 +326,7 @@ export default function GetToken({ token, initialState }) {
 						onSubmit={(event) => {
 							event.preventDefault()
 							const token = inputRef.current.value
-							setCookie(undefined, 'token', token)
+							setCookie(undefined, 'token', token, { maxAge: 500000000 })
 							setState({ token, initialState: state.initialState })
 						}}
 					>

@@ -15,7 +15,7 @@
 		"apollo-link-http": "^1.5.17",
 		"graphql": "^15.3.0",
 		"graphql-tag": "^2.10.4",
-		"next": "^9.4.4",
+		"next": "^9.5.1",
 		"nookies": "^2.3.2",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",

@@ -3,7 +3,7 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import gql from 'graphql-tag'
-import { setCookie, parseCookies } from 'nookies'
+import { setCookie, parseCookies, destroyCookie } from 'nookies'
 import { useMemo, useRef, useState, createContext, useContext, useEffect } from 'react'
 import TimeAgo from 'timeago-react'
 
@@ -220,7 +220,14 @@ function Stats({ setState }) {
 			{error ? (
 				<>
 					<p style={{ color: 'red' }}>Error: {error.message}</p>
-					<button onClick={() => setState({ token: '' })}>Delete saved token</button>
+					<button
+						onClick={() => {
+							setState({ token: '' })
+							destroyCookie(undefined, 'token')
+						}}
+					>
+						Delete saved token
+					</button>
 				</>
 			) : loading ? (
 				'Loading…'
@@ -279,6 +286,12 @@ export default function GetToken({ token, initialState }) {
 							margin: 32px 0 !important;
 						}
 
+						form {
+							display: flex;
+							align-items: center;
+							justify-content: center;
+						}
+
 						input {
 							border-radius: 16px;
 							border: 0;
@@ -330,7 +343,14 @@ export default function GetToken({ token, initialState }) {
 							setState({ token, initialState: state.initialState })
 						}}
 					>
-						<input type="text" ref={inputRef} placeholder="76d80224611fc919a5d54f0ff9fba446cdec93ec" />
+						<input
+							type="text"
+							ref={inputRef}
+							placeholder="76d80224611fc919a5d54f0ff9fba446cdec93ec"
+							autoCorrect="off"
+							autoComplete="off"
+							autoCapitalize="off"
+						/>
 						{typeof window !== 'undefined' && isMounted && navigator.clipboard && (
 							<button
 								type="button"
